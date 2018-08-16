@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
@@ -12,6 +11,9 @@ export default {
 </script>
 
 <style>
+html {
+  background-color: rgb(251, 252, 253);
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
