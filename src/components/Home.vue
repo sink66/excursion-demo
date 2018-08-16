@@ -7,8 +7,8 @@
     </el-row>
     <el-row :gutter="20" type="flex" justify="center" class="flex-benefits">
       <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
-        <el-card>
-          <div slot="header" class="clearfix">
+        <el-card class="box-card">
+          <div slot="header">
             <i class="catch-icon el-icon-edit-outline"></i>
           </div>
           <div>
@@ -17,8 +17,8 @@
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
-        <el-card>
-          <div slot="header" class="clearfix">
+        <el-card class="box-card">
+          <div slot="header">
             <i class="catch-icon el-icon-document"></i>
           </div>
           <div>
@@ -27,8 +27,8 @@
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="24" :md="7" :lg="7" :xl="7">
-        <el-card>
-          <div slot="header" class="clearfix">
+        <el-card class="box-card">
+          <div slot="header">
             <i class="catch-icon el-icon-download"></i>
           </div>
           <div>
@@ -68,8 +68,11 @@ export default {
   font-size: 2.5rem;
   color: #3EE8C4;
 }
+.box-card {
+  margin-bottom: 20px;
+}
 .top-margin{
-  margin-top: 70px;
+  margin-top: 50px;
 }
 .btn-anonymous{
   width: 300px;
