@@ -40,7 +40,7 @@
     <el-row :gutter="20" type="flex" justify="center" class="top-margin">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-col :span="24">
-          <el-button class="btn-anonymous" type="primary" plain>使ってみる</el-button>
+          <el-button @click="moveToTheme" class="btn-anonymous" type="primary" plain>使ってみる</el-button>
         </el-col>
       </el-col>
     </el-row>
@@ -52,6 +52,11 @@ export default {
   name: 'Home',
   data () {
     return {
+    }
+  },
+  methods: {
+    moveToTheme () {
+      this.$router.push('theme')
     }
   }
 }
