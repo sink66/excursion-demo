@@ -4,22 +4,34 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    theme: ''
+    theme: '',
+    some: ''
   },
   getters: {
     theme (state) {
       return state.theme
+    },
+    some (state) {
+      return state.some
     }
   },
   mutations: {
     setTheme (state, payload) {
       state.theme = payload.theme
+    },
+    setSome (state, payload) {
+      state.some = payload.some
     }
   },
   actions: {
     doThemeUpdate ({commit}, theme) {
       commit('setTheme', {
         theme
+      })
+    },
+    doSomeUpdate ({commit}, some) {
+      commit('setSome', {
+        some
       })
     }
   }
