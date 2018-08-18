@@ -20,10 +20,14 @@ export default {
         this.$router.push('some')
       } else if (this.$route.path === '/some') {
         this.$router.push('associate')
+      } else if (this.$route.path === '/associate') {
+        this.$router.push('idea')
       }
     },
     prev () {
-      if (this.$route.path === '/associate') {
+      if (this.$route.path === '/idea') {
+        this.$router.push('associate')
+      } else if (this.$route.path === '/associate') {
         this.$router.push('some')
       } else if (this.$route.path === '/some') {
         this.$router.push('theme')

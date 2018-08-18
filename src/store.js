@@ -6,7 +6,8 @@ const store = new Vuex.Store({
   state: {
     theme: '',
     some: '',
-    associates: []
+    associates: [],
+    ideas: {}
   },
   getters: {
     theme (state) {
@@ -14,6 +15,9 @@ const store = new Vuex.Store({
     },
     some (state) {
       return state.some
+    },
+    ideas (state) {
+      return state.ideas
     }
   },
   mutations: {
@@ -25,6 +29,9 @@ const store = new Vuex.Store({
     },
     setAssociates (state, payload) {
       state.associates = payload.associates
+    },
+    setIdeas (state, payload) {
+      state.ideas = payload.ideas
     }
   },
   actions: {
@@ -36,6 +43,11 @@ const store = new Vuex.Store({
     doSomeUpdate ({commit}, some) {
       commit('setSome', {
         some
+      })
+    },
+    doIdeasUpdate ({commit}, ideas) {
+      commit('setIdeas', {
+        ideas
       })
     }
   }
