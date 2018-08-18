@@ -86,7 +86,7 @@ export default {
   margin-bottom: 0px;
 }
 
-.bg-blue{
+.bg-blue {
   color:#409EFF;
 }
 
@@ -95,7 +95,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.stop-cursor-change{
+.stop-cursor-change {
   cursor: default !important;
 }
 
