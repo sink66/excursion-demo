@@ -5,7 +5,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     theme: '',
-    some: ''
+    some: '',
+    associates: []
   },
   getters: {
     theme (state) {
@@ -21,6 +22,9 @@ const store = new Vuex.Store({
     },
     setSome (state, payload) {
       state.some = payload.some
+    },
+    setAssociates (state, payload) {
+      state.associates = payload.associates
     }
   },
   actions: {

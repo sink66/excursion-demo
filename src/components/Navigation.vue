@@ -18,10 +18,14 @@ export default {
     next () {
       if (this.$route.path === '/theme') {
         this.$router.push('some')
+      } else if (this.$route.path === '/some') {
+        this.$router.push('associate')
       }
     },
     prev () {
-      if (this.$route.path === '/some') {
+      if (this.$route.path === '/associate') {
+        this.$router.push('some')
+      } else if (this.$route.path === '/some') {
         this.$router.push('theme')
       }
     }
