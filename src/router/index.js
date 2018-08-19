@@ -5,6 +5,7 @@ import Theme from '@/components/Theme'
 import Some from '@/components/Some'
 import Associate from '@/components/Associate'
 import Idea from '@/components/Idea'
+import Result from '@/components/Result'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/idea',
       name: 'Idea',
       component: Idea
+    },
+    {
+      path: '/result',
+      name: 'Result',
+      component: Result
     }
   ]
 })
