@@ -40,6 +40,9 @@
     <el-row :gutter="20" type="flex" justify="center" class="top-margin">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-col :span="24">
+          <el-button @click="doGoogleLogin" class="social-login btn-google"><span class="word">Googleアカウントでログイン</span></el-button>
+        </el-col>
+        <el-col :span="24">
           <el-button @click="moveToTheme" class="btn-anonymous" type="primary" plain>使ってみる</el-button>
         </el-col>
       </el-col>
@@ -48,6 +51,7 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
 export default {
   name: 'Home',
   data () {
@@ -55,6 +59,10 @@ export default {
     }
   },
   methods: {
+    doGoogleLogin () {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithRedirect(provider)
+    },
     moveToTheme () {
       this.$router.push('theme')
     }
@@ -82,5 +90,17 @@ export default {
 .btn-anonymous{
   width: 300px;
   height: 50px;
+}
+.btn-google:hover{
+  color: white !important;
+  background-color: #dd4b39 !important;
+}
+.social-login{
+  width: 300px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+.social-login .word {
+  font-size: 1rem;
 }
 </style>
