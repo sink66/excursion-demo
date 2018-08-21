@@ -37,12 +37,25 @@
     </el-row>
     <el-row :gutter="10" type="flex" justify="center">
       <el-col :xs="12" :sm="12" :md="4" :lg="4" :xl="4">
+        <el-button type="primary" icon="el-icon-document" @click="saveToFirestore()">Save</el-button>
+      </el-col>
+      <el-col :xs="12" :sm="12" :md="4" :lg="4" :xl="4">
         <el-button type="primary" icon="el-icon-download" @click="capture()">.PNG</el-button>
       </el-col>
       <el-col :xs="12" :sm="12" :md="4" :lg="4" :xl="4">
         <el-button type="primary" icon="el-icon-download" @click="exportExcel()">.XLSX</el-button>
       </el-col>
     </el-row>
+    <el-dialog
+      title="保存しました！"
+      :visible.sync="saveDialogVisible"
+      width="30%"
+      center>
+      <span>ログイン後、右上の保存一覧からいつでもこのアイデアを確認できます。ログインしないで使っている場合は、ブラウザを閉じるかログアウトボタンを押すと消えてしまいます。ご注意ください。</span>
+      <span slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="saveDialogVisible = false">OK</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -50,6 +63,7 @@
 import html2canvas from 'html2canvas'
 import XLSX from 'xlsx'
 import FileSaver from 'file-saver'
+import firebase from 'firebase/app'
 
 export default {
   data () {
@@ -58,7 +72,8 @@ export default {
         result_theme: this.$store.getters.theme,
         result_some: this.$store.getters.some
       }],
-      ideaData: this.$store.state.associates
+      ideaData: this.$store.state.associates,
+      saveDialogVisible: false
     }
   },
   methods: {
@@ -82,6 +97,17 @@ export default {
         if (typeof console !== 'undefined') console.log(e, wbout)
       }
       return wbout
+    },
+    saveToFirestore: function () {
+      var db = firebase.firestore()
+      var currentUid = this.$store.getters.userData.uid
+      db.collection(currentUid).add(this.$store.getters.allData)
+        .then(function (docRef) {
+          this.saveDialogVisible = true
+        }.bind(this))
+        .catch(function (error) {
+          console.error('Error writing document: ', error)
+        })
     }
   }
 }

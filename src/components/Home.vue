@@ -43,9 +43,18 @@
           <el-button @click="doGoogleLogin" class="social-login btn-google"><span class="word">Googleアカウントでログイン</span></el-button>
         </el-col>
         <el-col :span="24">
-          <el-button @click="moveToTheme" class="btn-anonymous" type="primary" plain>使ってみる</el-button>
+          <el-button class="btn-anonymous" type="primary" @click="doLoginAnonymous" plain>ログインしないで使ってみる</el-button>
         </el-col>
       </el-col>
+      <el-dialog
+        title=""
+        :visible.sync="dialogVisible"
+        width="30%">
+        <span>申し訳ありません。サービスの実行に失敗しました。後ほどお試しいただくか、運営者までご連絡ください。</span>
+        <span slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="dialogVisible = false">OK</el-button>
+        </span>
+      </el-dialog>
     </el-row>
   </div>
 </template>
@@ -56,12 +65,19 @@ export default {
   name: 'Home',
   data () {
     return {
+      dialogVisible: false
     }
   },
   methods: {
     doGoogleLogin () {
       const provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithRedirect(provider)
+    },
+    doLoginAnonymous () {
+      firebase.auth().signInAnonymously().catch(function (error) {
+        console.log(error)
+        this.dialogVisible = true
+      })
     },
     moveToTheme () {
       this.$router.push('theme')

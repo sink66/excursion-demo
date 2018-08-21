@@ -4,11 +4,13 @@
       <ul class="main-nav">
         <li><span id="nav-logo" @click="first">EXCURSION</span></li>
         <template v-if="this.$store.getters.userData.uid">
+          <li class="hidden-sm-and-down" @click="moveArchive">保存一覧</li>
           <li class="hidden-sm-and-down" @click="doLogout">ログアウト</li>
           <el-menu :default-active="activeIndex" class="el-menu-demo hidden-md-and-up" mode="horizontal" @select="handleSelect">
             <el-submenu index="1">
               <template slot="title">Menu</template>
               <el-menu-item index="1-1">保存一覧</el-menu-item>
+              <el-menu-item index="1-2">ログアウト</el-menu-item>
             </el-submenu>
           </el-menu>
         </template>
@@ -68,8 +70,13 @@ export default {
         this.$router.replace('/')
       }
     },
+    moveArchive () {
+      this.$router.replace('archive')
+    },
     handleSelect (key, keyPath) {
       if (key === '1-1') {
+        this.moveArchive()
+      } else if (key === '1-2') {
         this.doLogout()
       }
     }

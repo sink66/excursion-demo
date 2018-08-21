@@ -6,6 +6,7 @@ import Some from '@/components/Some'
 import Associate from '@/components/Associate'
 import Idea from '@/components/Idea'
 import Result from '@/components/Result'
+import Archive from '@/components/Archive'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/result',
       name: 'Result',
       component: Result
+    },
+    {
+      path: '/archive',
+      name: 'Archive',
+      component: Archive
     }
   ]
 })

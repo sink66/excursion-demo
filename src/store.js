@@ -22,6 +22,14 @@ const store = new Vuex.Store({
     },
     userData (state) {
       return state.userData
+    },
+    allData (state) {
+      return {
+        theme: state.theme,
+        some: state.some,
+        associates: state.associates,
+        ideas: state.ideas
+      }
     }
   },
   mutations: {
@@ -39,6 +47,17 @@ const store = new Vuex.Store({
     },
     setUserData (state, payload) {
       state.userData = payload.userData
+    },
+    bindFirestore (state, payload) {
+      const fs = {
+        theme: payload.theme,
+        some: payload.some,
+        associates: payload.associates,
+        ideaList: payload.ideaList
+      }
+      Object.keys(fs).forEach(key => {
+        state[key] = fs[key]
+      })
     }
   },
   actions: {

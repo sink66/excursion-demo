@@ -1,5 +1,5 @@
 <template>
-  <el-row :gutter="10" type="flex" justify="center" v-if="this.$route.path !== '/'">
+  <el-row :gutter="10" type="flex" justify="center" v-if="this.$route.path !== '/' && this.$route.path !== '/archive'">
     <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="16">
       <el-button-group class="nav-margin" v-if="this.$route.path === '/theme'">
         <el-button type="primary" @click="next">進む <i class="el-icon-arrow-right el-icon-right"></i></el-button>

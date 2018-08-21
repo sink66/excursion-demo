@@ -24,6 +24,8 @@ var config = {
   messagingSenderId: '861518226091'
 }
 firebase.initializeApp(config)
+var db = firebase.firestore()
+db.settings({timestampsInSnapshots: true})
 
 /* eslint-disable no-new */
 new Vue({
