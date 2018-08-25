@@ -1,5 +1,10 @@
 <template>
   <div>
+    <el-row type="flex" justify="center">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+        <img src="@/assets/logo.png" id="logo">
+      </el-col>
+    </el-row>
     <el-row>
       <el-col :span="24">
         <h1 class="catchphrase">偶然に頼るのはもう終わり。<br />シンプルでシステマティックなアイデア発想法。</h1>
@@ -87,6 +92,12 @@ export default {
 </script>
 
 <style scoped>
+#logo {
+  width: 100%;
+  height: auto;
+  margin-top: 1em;
+  margin-bottom: 4em;
+}
 .catchphrase {
   font-size: 1.5rem;
 }

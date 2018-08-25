@@ -2,7 +2,7 @@
   <div id="app">
     <el-header v-if="this.$route.path !== '/'">
       <ul class="main-nav">
-        <li><span id="nav-logo" @click="first">EXCURSION</span></li>
+        <li><img src="./assets/logo.png" id="nav-logo" @click="first"></li>
         <template v-if="this.$store.getters.userData.uid">
           <li class="hidden-sm-and-down" @click="moveArchive">保存一覧</li>
           <li class="hidden-sm-and-down" @click="doLogout">ログアウト</li>
@@ -132,6 +132,7 @@ ul.main-nav li {
   height: 55px;
   padding: 0px 20px;
   cursor: pointer;
+  line-height: 55px;
 }
 ul.main-nav li:not(:first-child):hover{
   transition: 0.2s;
@@ -141,5 +142,9 @@ ul.main-nav li:not(:first-child):hover{
 ul.main-nav li:first-child {
   margin-right: auto;
   padding: 0px;
+}
+#nav-logo {
+  width: auto;
+  height: 100%;
 }
 </style>
