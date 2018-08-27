@@ -11,9 +11,16 @@ import locale from 'element-ui/lib/locale/lang/ja'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import SocialSharing from 'vue-social-sharing'
 
 Vue.config.productionTip = false
 Vue.use(Element, { locale })
+Vue.use(SocialSharing)
+library.add(fab)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 var config = {
   apiKey: 'AIzaSyClIf5jKQF4Vy6rSvHbnyDCXXlBfyNHl3Q',

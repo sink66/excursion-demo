@@ -1,23 +1,55 @@
 <template>
   <div id="app">
-    <el-header v-if="this.$route.path !== '/'">
-      <ul class="main-nav">
-        <li><img src="./assets/logo.png" id="nav-logo" @click="first"></li>
-        <template v-if="this.$store.getters.userData.uid">
-          <li class="hidden-sm-and-down" @click="moveArchive">保存一覧</li>
-          <li class="hidden-sm-and-down" @click="doLogout">ログアウト</li>
-          <el-menu :default-active="activeIndex" class="el-menu-demo hidden-md-and-up" mode="horizontal" @select="handleSelect">
-            <el-submenu index="1">
-              <template slot="title">Menu</template>
-              <el-menu-item index="1-1">保存一覧</el-menu-item>
-              <el-menu-item index="1-2">ログアウト</el-menu-item>
-            </el-submenu>
-          </el-menu>
-        </template>
-      </ul>
-    </el-header>
-    <router-view/>
-    <Navigation />
+    <el-container>
+      <el-header v-if="this.$route.path !== '/'">
+        <ul class="main-nav">
+          <li><img src="./assets/logo.png" id="nav-logo" @click="first"></li>
+          <template v-if="this.$store.getters.userData.uid">
+            <li class="hidden-sm-and-down" @click="moveArchive">保存一覧</li>
+            <li class="hidden-sm-and-down" @click="doLogout">ログアウト</li>
+            <el-menu :default-active="activeIndex" class="el-menu-demo hidden-md-and-up" mode="horizontal" @select="handleSelect">
+              <el-submenu index="1">
+                <template slot="title">Menu</template>
+                <el-menu-item index="1-1">保存一覧</el-menu-item>
+                <el-menu-item index="1-2">ログアウト</el-menu-item>
+              </el-submenu>
+            </el-menu>
+          </template>
+        </ul>
+      </el-header>
+      <el-main id="main">
+        <router-view/>
+      </el-main>
+      <el-footer>
+        <Navigation />
+        <social-sharing url="https://skliber.net/excursion/"
+                          title="excursion | アイデアを発想するツール"
+                          description="excursion | アイデアを発想するツール | 「アイデアとは既存の要素の新しい組み合わせ以外の何ものでもない」 - ジェームス・W・ヤング"
+                          quote="excursion | アイデアを発想するツール | 「アイデアとは既存の要素の新しい組み合わせ以外の何ものでもない」 - ジェームス・W・ヤング"
+                          hashtags=""
+                          twitter-user=""
+                          :networks="hatenaBookmark"
+                          inline-template>
+          <div class="social-links">
+            <network network="twitter">
+              <font-awesome-icon :icon="['fab', 'twitter']" class="fa-3x" />
+            </network>
+            <network network="facebook">
+              <font-awesome-icon :icon="['fab', 'facebook']" class="fa-3x" />
+            </network>
+            <network network="googleplus">
+              <font-awesome-icon :icon="['fab', 'google-plus-square']" class="fa-3x" />
+            </network>
+            <network network="line">
+              <font-awesome-icon :icon="['fab', 'line']" class="fa-3x" />
+            </network>
+            <network network="hatena">
+              <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" class="hatena-bookmark-button" />
+            </network>
+          </div>
+        </social-sharing>
+      </el-footer>
+    </el-container>
   </div>
 </template>
 
@@ -33,7 +65,13 @@ export default {
     return {
       isLogin: false,
       userData: {},
-      activeIndex: '1'
+      activeIndex: '1',
+      hatenaBookmark: {
+        'hatena': {
+          'sharer': 'http://b.hatena.ne.jp/entry/s/skliber.net/excursion/',
+          'type': 'popup'
+        }
+      }
     }
   },
   watch: {
@@ -146,5 +184,34 @@ ul.main-nav li:first-child {
 #nav-logo {
   width: auto;
   height: 100%;
+}
+
+.hatena-bookmark-button{
+  flex: left;
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links svg {
+    margin-right: 1rem;
+    margin-bottom: 3px;
+    cursor: pointer;
+}
+.fa-facebook, .fa-facebook-square {
+    color: #3b5998
+}
+.fa-twitter, .fa-twitter-square {
+    color: #00aced
+}
+.fa-google-plus, .fa-google-plus-square {
+    color: #dd4b39
+}
+.fa-line {
+    color: #1dcd00
 }
 </style>

@@ -45,7 +45,7 @@
     <el-row :gutter="20" type="flex" justify="center" class="top-margin">
       <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
         <el-col :span="24">
-          <el-button @click="doGoogleLogin" class="social-login btn-google"><span class="word">Googleアカウントでログイン</span></el-button>
+          <el-button @click="doGoogleLogin" class="social-login btn-google"><font-awesome-icon :icon="['fab', 'google-plus']" /><span class="word">Googleアカウントでログイン</span></el-button>
         </el-col>
         <el-col :span="24">
           <el-button class="btn-anonymous" type="primary" @click="doLoginAnonymous" plain>ログインしないで使ってみる</el-button>
@@ -128,6 +128,15 @@ export default {
   margin-bottom: 10px;
 }
 .social-login .word {
+  position: relative;
+  bottom: 3px;
   font-size: 1rem;
+}
+.social-login svg {
+  margin-right: 10px;
+  font-size: 1.5rem;
+}
+.social-login:hover svg {
+  color: white;
 }
 </style>
