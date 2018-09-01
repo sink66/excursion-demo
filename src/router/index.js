@@ -7,6 +7,10 @@ import Associate from '@/components/Associate'
 import Idea from '@/components/Idea'
 import Result from '@/components/Result'
 import Archive from '@/components/Archive'
+import Terms from '@/components/Terms'
+import Privacy from '@/components/Privacy'
+import Howto from '@/components/Howto'
+import store from '@/store.js'
 
 Vue.use(Router)
 
@@ -20,32 +24,89 @@ export default new Router({
     {
       path: '/theme',
       name: 'Theme',
-      component: Theme
+      component: Theme,
+      beforeEnter (to, from, next) {
+        if (store.getters.userData.uid) {
+          next()
+        } else {
+          next('/')
+        }
+      }
     },
     {
       path: '/some',
       name: 'Some',
-      component: Some
+      component: Some,
+      beforeEnter (to, from, next) {
+        if (store.getters.userData.uid) {
+          next()
+        } else {
+          next('/')
+        }
+      }
     },
     {
       path: '/associate',
       name: 'Associate',
-      component: Associate
+      component: Associate,
+      beforeEnter (to, from, next) {
+        if (store.getters.userData.uid) {
+          next()
+        } else {
+          next('/')
+        }
+      }
     },
     {
       path: '/idea',
       name: 'Idea',
-      component: Idea
+      component: Idea,
+      beforeEnter (to, from, next) {
+        if (store.getters.userData.uid) {
+          next()
+        } else {
+          next('/')
+        }
+      }
     },
     {
       path: '/result',
       name: 'Result',
-      component: Result
+      component: Result,
+      beforeEnter (to, from, next) {
+        if (store.getters.userData.uid) {
+          next()
+        } else {
+          next('/')
+        }
+      }
     },
     {
       path: '/archive',
       name: 'Archive',
-      component: Archive
+      component: Archive,
+      beforeEnter (to, from, next) {
+        if (store.getters.userData.uid) {
+          next()
+        } else {
+          next('/')
+        }
+      }
+    },
+    {
+      path: '/terms',
+      name: 'Terms',
+      component: Terms
+    },
+    {
+      path: '/privacy',
+      name: 'Privacy',
+      component: Privacy
+    },
+    {
+      path: '/howto',
+      name: 'Howto',
+      component: Howto
     }
   ]
 })

@@ -18,7 +18,23 @@
         </ul>
       </el-header>
       <el-main id="main">
-        <router-view/>
+        <el-row :gutter="10" class="bottom-margin" type="flex" justify="center"
+        v-if="this.$route.path !== '/terms' &&
+        this.$route.path !== '/privacy' &&
+        this.$route.path !== '/howto' &&
+        this.$route.path !== '/archive'">
+          <el-col :xs="24" :sm="24" :md="16" :lg="14" :xl="14">
+            <el-card shadow="hover" class="bottom-margin" v-if="this.$store.getters.theme">
+              {{ this.$store.getters.theme }}
+            </el-card>
+            <el-card shadow="hover" class="bottom-margin" v-if="this.$store.getters.some">
+              {{ this.$store.getters.some }}
+            </el-card>
+          </el-col>
+        </el-row>
+        <transition>
+          <router-view/>
+        </transition>
       </el-main>
       <el-footer>
         <Navigation />
@@ -48,6 +64,22 @@
             </network>
           </div>
         </social-sharing>
+        <div id="footer-links" class="top-margin-middle bottom-margin">
+          <el-row :gutter="10" type="flex" justify="center">
+            <el-col :span="5">
+              <span id="howto" @click="howto">使い方</span>
+            </el-col>
+            <el-col :span="5">
+              <span id="terms" @click="terms">利用規約</span>
+            </el-col>
+            <el-col :span="5">
+              <span id="privacy" @click="privacy">プライバシーポリシー</span>
+            </el-col>
+            <el-col :span="5">
+              <span id="copylight"><a href="#">© 2018</a></span>
+            </el-col>
+          </el-row>
+        </div>
       </el-footer>
     </el-container>
   </div>
@@ -100,6 +132,7 @@ export default {
   methods: {
     doLogout () {
       firebase.auth().signOut()
+      this.$store.dispatch('clearAllState')
     },
     first () {
       if (this.isLogin) {
@@ -117,6 +150,15 @@ export default {
       } else if (key === '1-2') {
         this.doLogout()
       }
+    },
+    terms () {
+      this.$router.replace('/terms')
+    },
+    privacy () {
+      this.$router.replace('/privacy')
+    },
+    howto () {
+      this.$router.replace('/howto')
     }
   }
 }
@@ -158,7 +200,6 @@ html {
   background-color: rgb(251, 252, 253) !important;
   border-bottom: 1px solid rgb(192, 192, 192) !important;
 }
-
 ul.main-nav {
   display: flex;
   list-style: none;
@@ -185,18 +226,15 @@ ul.main-nav li:first-child {
   width: auto;
   height: 100%;
 }
-
 .hatena-bookmark-button{
   flex: left;
   cursor: pointer;
   width: 42px;
   height: 42px;
 }
-
 .social-links {
   margin-top: 20px;
 }
-
 .social-links svg {
     margin-right: 1rem;
     margin-bottom: 3px;
@@ -213,5 +251,21 @@ ul.main-nav li:first-child {
 }
 .fa-line {
     color: #1dcd00
+}
+.v-enter-active {
+  transition: opacity 1s;
+}
+.v-enter {
+  opacity: 0;
+}
+.bottom-margin {
+  margin-bottom: 10px;
+}
+#copylight a, #footer-links a, #terms, #privacy, #howto {
+  text-decoration: none;
+  cursor: pointer;
+}
+.top-margin-middle {
+  margin-top: 20px;
 }
 </style>

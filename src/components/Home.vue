@@ -50,6 +50,9 @@
         <el-col :span="24">
           <el-button class="btn-anonymous" type="primary" @click="doLoginAnonymous" plain>ログインしないで使ってみる</el-button>
         </el-col>
+        <el-col :span="24" class="top-margin-middle">
+          <i class="el-icon-warning warning-icon"></i>本サービスを利用された場合は<span @click="moveTerms" class="warning-span">利用規約</span>と<span @click="movePrivacy" class="warning-span">プライバシーポリシー</span>にご同意を頂いたものとします。必ずご確認をお願いいたします。
+        </el-col>
       </el-col>
       <el-dialog
         title=""
@@ -86,6 +89,12 @@ export default {
     },
     moveToTheme () {
       this.$router.push('theme')
+    },
+    moveTerms () {
+      this.$router.push('terms')
+    },
+    movePrivacy () {
+      this.$router.push('privacy')
     }
   }
 }
@@ -113,6 +122,16 @@ export default {
 }
 .top-margin{
   margin-top: 50px;
+}
+.top-margin-middle{
+  margin-top: 20px;
+}
+.warning-icon {
+  color: #E6A23C;
+}
+.warning-span {
+  color: #409EFF;
+  cursor: pointer;
 }
 .btn-anonymous{
   width: 300px;

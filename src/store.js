@@ -58,6 +58,18 @@ const store = new Vuex.Store({
       Object.keys(fs).forEach(key => {
         state[key] = fs[key]
       })
+    },
+    reset (state) {
+      const s = {
+        theme: '',
+        some: '',
+        associates: [],
+        ideas: {},
+        userData: {}
+      }
+      Object.keys(s).forEach(key => {
+        state[key] = s[key]
+      })
     }
   },
   actions: {
@@ -80,6 +92,9 @@ const store = new Vuex.Store({
       commit('setUserData', {
         userData
       })
+    },
+    clearAllState ({ commit }) {
+      commit('reset')
     }
   }
 })
